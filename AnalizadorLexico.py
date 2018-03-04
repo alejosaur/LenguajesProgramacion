@@ -20,16 +20,19 @@ def checkLine(T,i):
     k=0
     while(k < len(T)):
         encontrado = checkRegex(T[inicio:k],i)
+        #print(T[inicio:k])
         if(k==len(T)-1 and encontrado != 0):
-            #print(encontrado +" "+ T[inicio:k])
             (darFormato(str(encontrado),inicio,T[inicio:k],i))
             k+=1
         elif(((encontrado==0 or encontrado == "espacios") and (last != 0 and last != "espacios"))):
-            #print(str(last) + T[inicio:k-1])
             (darFormato(str(last),inicio,T[inicio:k-1],i))
             inicio = k-1
         elif(encontrado=="espacios"):
             inicio = k
+        elif(encontrado=="completa"):
+            darFormato(str(encontrado),inicio,T[inicio:k],i)
+            inicio=k
+            k += 1
         else:
             k += 1
         last=encontrado
@@ -52,7 +55,7 @@ def darFormato(tipo, k, cadena,i):
     elif(tipo == "incompleta"):
         print("Error lexico(linea:"+str(i+1)+",posicion:"+str(k+1)+")")
     elif(tipo == "completa"):
-        print("<token_string,"+ cadena[1:-2] +","+str(i+1)+","+str(k+1)+">")
+        print("<token_string,"+ cadena[1:-1] +","+str(i+1)+","+str(k+1)+">")
     elif(tipo == 0):
         print("Error lexico(linea:"+str(i+1)+",posicion:"+str(k+1)+")")
 
@@ -60,9 +63,9 @@ def checkRegex(T,i):
     if(re.search(comentario,T)):
         return("comentario")
     elif(re.search(stringCompleta,T)):
-        return("incompleta")
-    elif(re.search(stringIncompleta,T)):
         return("completa")
+    elif(re.search(stringIncompleta,T)):
+        return("incompleta")
     elif(re.search(tokensreservados1,T)):
         return("t1")
     elif(re.search(tokensreservados2,T)):

@@ -1,8 +1,1 @@
-while
-
-             for
-     if
-       log
-funcion
->=
-}
+a= false

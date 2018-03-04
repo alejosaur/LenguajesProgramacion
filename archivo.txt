@@ -1,0 +1,8 @@
+while
+
+             for
+     if
+       log
+funcion
+>=
+}

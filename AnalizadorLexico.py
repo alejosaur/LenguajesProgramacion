@@ -5,7 +5,7 @@ entero = re.compile('[1-9]+')
 identificador = re.compile('(([a-z,A-Z])+[0-9]*)+')
 tokensreservados1 = re.compile('({|}|#|\[|\]|\(|\)|>|<|\.|!|\+|-|\*|/|%|\^|=)+')
 tokensreservados2 = re.compile('(>=|<=|==|!=|in|&&|\|\|)+')
-tokensLargos = re.compile('(funcion|retorno|log|end|for|while|if)+')
+tokensLargos = re.compile('(funcion|retorno|log|end|for|while|if|lozano)+')
 espacios = re.compile('\ +|\n+|\t+')
 
 diccionarioTokens={'{':'token_llave_izq','}':'token_llave_der','#':'token_com','[':'token_cor_izq',']':'token-cor-der','(':'token_par_izq',')':'token_par_der','>':'token_mayor','<':'token_menor','.':'token_point','!':'token_not','+':'token_mas','-':'token_menos','*':'token_mul','/':'token_div','%':'token_mod','^':'token_pot','=':'token_assign','>=':'token_mayor_igual','<=':'token_menor_igual','==':'token_igual_num','!=':'token_diff_num','in':'token_in','&&':'token_and','||':'token_or'}
@@ -41,4 +41,4 @@ for i in range(0, len(lines)):
 
 Entrada.close()
 
-#me voy adormir perri
+#me voy adormir perri perri perrito

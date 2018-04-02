@@ -298,7 +298,7 @@ STAT={
   '<if>':['COMP_STAT'],
   '<for>':['COMP_STAT'],
   '<while>':['COMP_STAT'],
-  '<funcion>':['COMP_STAT'],
+  '<funcion>':['COMP_STAT']
 }
 
 COMP_STAT={
@@ -389,7 +389,329 @@ ASSIGNMENT3={
 }
 
 ASSIGNMENT3P={
-  
+  '<token_assign>':['<token_assign>','EXPR'],
+  '<enter>':['epsilon']
+}
+
+IF_STAT={
+  '<if>':['<if>','COND','ELSE_STAT']
+}
+
+ELSE_STAT={
+  '<elif>':['<elif>','COND','ELSE_STAT'],
+  '<else>':['<else>','STAT_BLOCK'],
+  '<enter>':['<enter>','ELSE_STAT'],
+  '<EOF>':['epsilon'],
+  '<id>':['epsilon'],
+  '<importar>':['epsilon'],
+  '<desde>':['epsilon'],
+  '<log>':['epsilon'],
+  '<retorno>':['epsilon'],
+  '<token_integer>':['epsilon'],
+  '<token_float>':['epsilon'],
+  '<true>':['epsilon'],
+  '<false>':['epsilon'],
+  '<token_string>':['epsilon'],
+  '<nil>':['epsilon'],
+  '<token_cor_izq>':['epsilon'],
+  '<token_llave_izq>':['epsilon'],
+  '<if>':['epsilon'],
+  '<for>':['epsilon'],
+  '<while>':['epsilon'],
+  '<funcion>':['epsilon'],
+  '<end>':['epsilon'],
+  '<token_llave_der>':['epsilon']
+}
+
+COND={
+  '<token_par_izq>':['<token_par_izq>','EXPR','<token_par_der>','CONDP']
+}
+
+CONDP={
+  '<token_llave_izq>':['STAT_BLOCK'],
+  '<token_point>':['STAT_BLOCK'],
+  '<id>':['STAT_BLOCK'],
+  '<importar>':['STAT_BLOCK'],
+  '<desde>':['STAT_BLOCK'],
+  '<log>':['STAT_BLOCK'],
+  '<token_integer>':['STAT_BLOCK'],
+  '<token_float>':['STAT_BLOCK'],
+  '<true>':['STAT_BLOCK'],
+  '<false>':['STAT_BLOCK'],
+  '<token_string>':['STAT_BLOCK'],
+  '<nil>':['STAT_BLOCK'],
+  '<token_cor_izq>':['STAT_BLOCK'],
+  '<retorno>':['STAT_BLOCK'],
+  '<if>':['STAT_BLOCK'],
+  '<for>':['STAT_BLOCK'],
+  '<while>':['STAT_BLOCK'],
+  '<funcion>':['STAT_BLOCK'],
+  '<enter>':['enter','STAT_BLOCK']
+}
+
+STAT_BLOCK={
+  '<token_point>':['STAT2','<enter>'],
+  '<id>':['STAT2','<enter>'],
+  '<importar>':['STAT2','<enter>'],
+  '<desde>':['STAT2','<enter>'],
+  '<log>':['STAT2','<enter>'],
+  '<token_integer>':['STAT2','<enter>'],
+  '<token_float>':['STAT2','<enter>'],
+  '<true>':['STAT2','<enter>'],
+  '<false>':['STAT2','<enter>'],
+  '<token_string>':['STAT2','<enter>'],
+  '<nil>':['STAT2','<enter>'],
+  '<token_cor_izq>':['STAT2','<enter>'],
+  '<retorno>':['STAT2','<enter>'],
+  '<if>':['STAT2','<enter>'],
+  '<for>':['STAT2','<enter>'],
+  '<while>':['STAT2','<enter>'],
+  '<funcion>':['STAT2','<enter>'],
+  '<enter>':['enter','STAT_BLOCK'],
+  '<token_llave_izq>':['<token_llave_izq>','STAT_BLOCKP','<token_llave_der>']
+}
+
+STAT_BLOCKP={
+  '<token_llave_der>':['epsilon'],
+  '<enter>':['AUXF'],
+  '<token_point>':['AUXF'],
+  '<id>':['AUXF'],
+  '<importar>':['AUXF'],
+  '<desde>':['AUXF'],
+  '<log>':['AUXF'],
+  '<retorno>':['AUXF'],
+  '<token_integer>':['AUXF'],
+  '<token_float>':['AUXF'],
+  '<true>':['AUXF'],
+  '<false>':['AUXF'],
+  '<token_string>':['AUXF'],
+  '<nil>':['AUXF'],
+  '<token_cor_izq>':['AUXF'],
+  '<token_llave_izq>':['AUXF'],
+  '<if>':['AUXF'],
+  '<for>':['AUXF'],
+  '<while>':['AUXF'],
+  '<funcion>':['AUXF']
+}
+
+STAT2={
+  '<token_point>':['SIMPLE_STAT2'],
+  '<id>':['SIMPLE_STAT2'],
+  '<importar>':['SIMPLE_STAT2'],
+  '<desde>':['SIMPLE_STAT2'],
+  '<log>':['SIMPLE_STAT2'],
+  '<token_integer>':['SIMPLE_STAT2'],
+  '<token_float>':['SIMPLE_STAT2'],
+  '<true>':['SIMPLE_STAT2'],
+  '<false>':['SIMPLE_STAT2'],
+  '<token_string>':['SIMPLE_STAT2'],
+  '<nil>':['SIMPLE_STAT2'],
+  '<token_cor_izq>':['SIMPLE_STAT2'],
+  '<retorno>':['SIMPLE_STAT2'],
+  '<if>':['COMP_STAT'],
+  '<for>':['COMP_STAT'],
+  '<while>':['COMP_STAT'],
+  '<funcion>':['COMP_STAT']
+}
+
+SIMPLE_STAT2={
+  '<id>':['ASSIGNMENT3'],
+  '<log>':['LOG'],
+  '<importar>':['IMPORTAR'],
+  '<desde>':['IMPORTAR'],
+  '<retorno>':['RETORNAR'],
+  '<token_integer>':['ATOM2','<enter>'],
+  '<token_float>':['ATOM2','<enter>'],
+  '<true>':['ATOM2','<enter>'],
+  '<false>':['ATOM2','<enter>'],
+  '<token_string>':['ATOM2','<enter>'],
+  '<nil>':['ATOM2','<enter>'],
+  '<token_cor_izq>':['ATOM2','<enter>']
+}
+
+ATOM2={
+  '<token_integer>':['<token_integer>'],
+  '<token_float>':['<token_float>'],
+  '<true>':['<true>'],
+  '<false>':['<false>'],
+  '<token_string>':['<token_string>'],
+  '<token_cor_izq>':["ARRAY"],
+  '<nil>':['<nil>']
+}
+
+WHILE_STAT={
+  '<while>':['<while>','EXPR','STAT_BLOCK']
+}
+
+FOR_STAT={
+  '<for>':['<for>','<id>','<in>','EXPR','STAT_BLOCK']
+}
+
+OBJETO={
+  '<token_llave_izq>':['<token_llave_izq>','AUXO','<token_llave_der>']
+}
+
+AUXO={
+  '<id>':['KEYVALUE','AUXO'],
+  '<token_coma>':['<token_coma>','KEYVALUE','AUXO'],
+  '<token_llave_der>':['epsilon']
+}
+
+VARIABLE={
+  '<id>':['<id>','AUXIP']
+}
+
+AUXIP={
+  '<token_par_izq>':['<token_par_izq>','AUXV','<token_par_der>'],
+  '<token_point>':['AUXI'],
+  '<token_cor_izq>':['AUXI'],
+  '<token_par_der>':['AUXI'],
+  '<EOF>':['AUXI'],
+  '<token_assign>':['AUXI'],
+  '<token_mul>':['AUXI'],
+  '<token_div>':['AUXI'],
+  '<token_mod>':['AUXI'],
+  '<token_mas>':['AUXI'],
+  '<token_menos>':['AUXI'],
+  '<token_mayor_igual>':['AUXI'],
+  '<token_menor_igual>':['AUXI'],
+  '<token_mayor>':['AUXI'],
+  '<token_menor>':['AUXI'],
+  '<token_igual_num>':['AUXI'],
+  '<token_diff_num>':['AUXI'],
+  '<token_and>':['AUXI'],
+  '<token_or>':['AUXI'],
+  '<token_coma>':['AUXI'],
+  '<token_pot>':['AUXI'],
+  '<token_not>':['AUXI'],
+  '<token_par_izq>':['AUXI'],
+  '<token_integer>':['AUXI'],
+  '<token_float>':['AUXI'],
+  '<true>':['AUXI'],
+  '<false>':['AUXI'],
+  '<token_string>':['AUXI'],
+  '<nil>':['AUXI'],
+  '<token_llave_izq>':['AUXI'],
+  '<id>':['AUXI'],
+  '<token_cor_der>':['AUXI'],
+  '<token_dosp>':['AUXI'],
+  '<enter>':['AUXI'],
+  '<funcion>':['AUXI'],
+  '<log>':['AUXI'],
+  '<importar>':['AUXI'],
+  '<desde>':['AUXI'],
+  '<retorno>':['AUXI'],
+  '<if>':['AUXI'],
+  '<while>':['AUXI'],
+  '<for>':['AUXI'],
+  '<end>':['AUXI'],
+  '<token_llave_der>':['AUXI']
+}
+
+AUXI={
+  '<token_point>':['<token_point>','<id>','AUXI'],
+  '<token_cor_izq>':['<token_cor_izq>','EXPR','<token_cor_der>'],
+  '<token_assign>':['epsilon'],
+  '<EOF>':['epsilon'],
+  '<token_mul>':['epsilon'],
+  '<token_div>':['epsilon'],
+  '<token_mod>':['epsilon'],
+  '<token_mas>':['epsilon'],
+  '<token_menos>':['epsilon'],
+  '<token_mayor_igual>':['epsilon'],
+  '<token_menor_igual>':['epsilon'],
+  '<token_mayor>':['epsilon'],
+  '<token_menor>':['epsilon'],
+  '<token_igual_num>':['epsilon'],
+  '<token_diff_num>':['epsilon'],
+  '<token_and>':['epsilon'],
+  '<token_or>':['epsilon'],
+  '<token_pot>':['epsilon'],
+  '<enter>':['epsilon'],
+  '<id>':['epsilon'],
+  '<importar>':['epsilon'],
+  '<desde>':['epsilon'],
+  '<log>':['epsilon'],
+  '<retorno>':['epsilon'],
+  '<token_integer>':['epsilon'],
+  '<token_float>':['epsilon'],
+  '<true>':['epsilon'],
+  '<false>':['epsilon'],
+  '<token_string>':['epsilon'],
+  '<nil>':['epsilon'],
+  '<token_llave_izq>':['epsilon'],
+  '<if>':['epsilon'],
+  '<for>':['epsilon'],
+  '<while>':['epsilon'],
+  '<funcion>':['epsilon'],
+  '<end>':['epsilon'],
+  '<token_llave_der>':['epsilon'],
+  '<token_coma>':['epsilon'],
+  '<token_not>':['epsilon'],
+  '<token_par_izq>':['epsilon'],
+  '<token_cor_der>':['epsilon'],
+  '<token_par_der>':['epsilon'],
+  '<token_dosp>':['epsilon']
+}
+
+IMPORTAR={
+  '<importar>':['<importar>','<id>','AUXI'],
+  '<desde>':['<desde>','<id>','<importar>','<id>']
+}
+
+LOG={
+  '<log>':['<log>','<token_par_izq>','EXPR','<token_par_der>']
+}
+
+LEER={
+  '<leer>':['<leer>','<token_par_izq>','<id>','<token_par_der>']
+}
+
+RETORNAR={
+  '<retorno>':['<retorno>','<token_par_izq>','EXPR','<token_par_der>','<enter>']
+}
+
+ACCESSARRAY={
+  '<id>':['VARIABLE','<token_cor_izq>','EXPR','<token_cor_der>']
+}
+
+AUXV={
+  '<token_par_izq>':['EXPR','AUXVP'],
+  '<token_not>':['EXPR','AUXVP'],
+  '<token_integer>':['EXPR','AUXVP'],
+  '<token_float>':['EXPR','AUXVP'],
+  '<true>':['EXPR','AUXVP'],
+  '<false>':['EXPR','AUXVP'],
+  '<token_string>':['EXPR','AUXVP'],
+  '<nil>':['EXPR','AUXVP'],
+  '<token_cor_izq>':['EXPR','AUXVP'],
+  '<id>':['EXPR','AUXVP'],
+  '<token_llave_izq>':['EXPR','AUXVP'],
+  '<token_mul>':['EXPR','AUXVP'],
+  '<token_div>':['EXPR','AUXVP'],
+  '<token_mod>':['EXPR','AUXVP'],
+  '<token_mas>':['EXPR','AUXVP'],
+  '<token_menos>':['EXPR','AUXVP'],
+  '<token_mayor_igual>':['EXPR','AUXVP'],
+  '<token_menor_igual>':['EXPR','AUXVP'],
+  '<token_mayor>':['EXPR','AUXVP'],
+  '<token_menor>':['EXPR','AUXVP'],
+  '<token_igual_num>':['EXPR','AUXVP'],
+  '<token_diff_num>':['EXPR','AUXVP'],
+  '<token_and>':['EXPR','AUXVP'],
+  '<token_or>':['EXPR','AUXVP'],
+  '<token_pot>':['EXPR','AUXVP'],
+  '<token_coma>':['EXPR','AUXVP'],
+  '<token_par_der>':['epsilon']
+}
+
+AUXVP={
+  '<token_coma>':['<token_coma>','EXPR','AUXVP'],
+  '<token_par_der>':['epsilon']
+}
+
+KEYVALUE={
+  '<id>':['<id>','<token_dosp>','EXPR']
 }
 
 a=FACTOREXPR2['<token_mayor_igual>']
